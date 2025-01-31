@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memepedia - The Ultimate Meme Encyclopedia</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.12/marked.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #121212;
+            color: white;
+            max-width: 800px;
+            margin: auto;
+            padding: 10px;
+        }
+        h1, h2, h3 {
+            color: #FFD700;
+            text-align: center;
+        }
+        .meme-container {
+            border: 1px solid #FFD700;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            background-color: #1E1E1E;
+            text-align: center;
+        }
+        img {
+            max-width: 100%;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        ul {
+            padding-left: 20px;
+            text-align: left;
+        }
+        @media (max-width: 600px) {
+            body {
+                font-size: 14px;
+            }
+            .meme-container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🔥 Memepedia - The Ultimate Meme Encyclopedia 🔥</h1>
+    <p>Welcome to Memepedia, the most **based** archive of internet meme culture. Every meme, explained.</p>
+
+    <div id="meme-list">Loading memes...</div>
+
+    <script>
+        // Embedded JSON (No fetch needed for iPhone support)
+        const memes = [
+            {
+                "name": "This Is Fine",
+                "image_url": "https://i.kym-cdn.com/photos/images/newsfeed/000/974/766/69e.jpg",
+                "template_origin": {
+                    "source": "Gunshow webcomic",
+                    "creator": "KC Green",
+                    "year": 2013,
+                    "original_url": "https://gunshowcomic.com/648"
+                },
+                "first_appearance": {
+                    "platform": "Tumblr, Reddit",
+                    "year": 2014
+                },
+                "context_and_meaning": {
+                    "literal_meaning": "A dog sits in a burning room, casually saying 'this is fine.'",
+                    "implied_meaning": "Symbolizes ignoring problems while everything is falling apart.",
+                    "cultural_relevance": "Often used to represent coping with chaos, denial, or self-destruction."
+                },
+                "usage_and_variations": {
+                    "common_uses": [
+                        "Reacting to bad situations with fake optimism",
+                        "Sarcastic response to disasters or failures",
+                        "Memes about government incompetence, economy, climate change, etc."
+                    ],
+                    "popular_variations": [
+                        "Second panel where the dog melts: 'Okay, maybe this isn’t fine.'",
+                        "Fire replaced with different crises (e.g., debt, inflation, broken relationships)."
+                    ],
+                    "meme_lifespan": "Still relevant, often used during global events and crises."
+                },
+                "impact_and_spread": {
+                    "virality_level": "Massive, widely recognized reaction meme",
+                    "where_it_blew_up": ["Reddit", "Twitter", "News satire", "Memes about real-world events"],
+                    "main_audience": ["Millennials", "Gen Z", "News and politics followers"]
+                },
+                "example_and_execution": {
+                    "original_meme_example": "Investors during a market crash: 'This is fine.'",
+                    "new_application": "Me on Zoom while my WiFi crashes: 'This is fine.'"
+                }
+            }
+        ];
+
+        function renderMemes() {
+            const memeList = document.getElementById("meme-list");
+            memeList.innerHTML = ""; // Clear default text
+
+            memes.forEach(meme => {
+                let memeHTML = `
+                    <div class="meme-container">
+                        <h2>${meme.name}</h2>
+                        <img src="${meme.image_url}" alt="${meme.name}">
+                        <h3>📌 Origin:</h3>
+                        <p>${meme.template_origin.source} by ${meme.template_origin.creator} (${meme.template_origin.year})</p>
+                        <h3>🕰 First Appearance:</h3>
+                        <p>${meme.first_appearance.platform} (${meme.first_appearance.year})</p>
+                        <h3>📖 Meaning:</h3>
+                        <p>${meme.context_and_meaning.implied_meaning}</p>
+                        <h3>⚡ Usage & Variations:</h3>
+                        <ul>${meme.usage_and_variations.common_uses.map(use => `<li>${use}</li>`).join('')}</ul>
+                        <h3>💡 Example:</h3>
+                        <p>${meme.example_and_execution.original_meme_example}</p>
+                        <h3>🚀 New Application:</h3>
+                        <p>${meme.example_and_execution.new_application}</p>
+                    </div>
+                `;
+
+                memeList.innerHTML += memeHTML;
+            });
+        }
+
+        renderMemes();
+    </script>
+
+</body>
+</html>
